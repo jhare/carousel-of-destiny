@@ -11,5 +11,3 @@ var CarouselSlice = angular.module('angular-carousel')
         }
     };
 });
-
-module.exports = CarouselSlice;

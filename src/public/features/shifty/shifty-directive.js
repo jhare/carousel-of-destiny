@@ -1399,5 +1399,3 @@ var Shifty = angular.module('angular-carousel.shifty', [])
 
   return window.Tweenable;
 });
-
-module.exports = Shifty;

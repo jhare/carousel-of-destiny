@@ -26,5 +26,3 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
       '</div>'
   );
 }]);
-
-module.exports = CarouselIndicators;

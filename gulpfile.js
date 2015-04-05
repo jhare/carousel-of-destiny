@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var stylus = require('gulp-stylus');
 var transform = require('vinyl-transform');
+var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var browserify = require('browserify');
@@ -18,6 +19,7 @@ var options = {
     'buildDir': './dist/',
     'buildFile': 'carousel-of-destiny.js',
     'sources': [
+      './src/public/carousel-of-destiny.js',
       './src/public/core/**/*.js',
       './src/public/common/**/*.js',
       './src/public/features/**/*.js'
@@ -44,11 +46,14 @@ function buildJavascript() {
     return browserify(file, options.browserify)
       .bundle()
       .pipe(source(options.javascript.buildFile))
+      .pipe(buffer())
+      .pipe(uglify())
       .pipe(gulp.dest(options.javascript.buildDir));
   }
 
   return gulp
     .src(options.javascript.sources)
+    .pipe(uglify())
     .pipe(manifest(options.javascript.buildFile, options.manifest))
     .pipe(tap(doBrowserification));
 }

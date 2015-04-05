@@ -563,5 +563,3 @@ var AngularCarousel = angular.module('angular-carousel')
         };
     }
 ]);
-
-module.exports = AngularCarousel;

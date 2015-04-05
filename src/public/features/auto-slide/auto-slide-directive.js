@@ -30,5 +30,3 @@ var carouselAutoSlide = angular.module('angular-carousel')
     }
   };
 }]);
-
-module.exports = carouselAutoSlide;
