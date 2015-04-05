@@ -18,9 +18,9 @@ var options = {
     'buildDir': './dist/',
     'buildFile': 'carousel-of-destiny.js',
     'sources': [
-      './src/core/**/*.js',
-      './src/common/**/*.js',
-      './src/features/**/*.js'
+      './src/public/core/**/*.js',
+      './src/public/common/**/*.js',
+      './src/public/features/**/*.js'
     ]
   },
   'browserify': {
@@ -34,7 +34,7 @@ var options = {
   'styles': {
     'buildFile': 'styles.css',
     'sources': [
-      './src/styles'
+      './src/public/styles'
     ]
   }
 };
