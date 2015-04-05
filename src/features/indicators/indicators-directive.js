@@ -1,4 +1,5 @@
-angular.module('angular-carousel')
+'use strict';
+var CarouselIndicators = angular.module('angular-carousel')
 
 .directive('rnCarouselIndicators', ['$parse', function($parse) {
   return {
@@ -18,9 +19,12 @@ angular.module('angular-carousel')
 }]);
 
 angular.module('angular-carousel').run(['$templateCache', function($templateCache) {
+  // TODO: Christ, fix this
   $templateCache.put('carousel-indicators.html',
       '<div class="rn-carousel-indicator">\n' +
         '<span ng-repeat="slide in slides" ng-class="{active: $index==index}" ng-click="goToSlide($index)">●</span>' +
       '</div>'
   );
 }]);
+
+module.exports = CarouselIndicators;

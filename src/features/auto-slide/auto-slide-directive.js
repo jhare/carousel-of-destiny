@@ -1,5 +1,6 @@
-angular.module('angular-carousel')
+'use strict';
 
+var carouselAutoSlide = angular.module('angular-carousel')
 .directive('rnCarouselAutoSlide', ['$interval', function($interval) {
   return {
     restrict: 'A',
@@ -29,3 +30,5 @@ angular.module('angular-carousel')
     }
   };
 }]);
+
+module.exports = carouselAutoSlide;

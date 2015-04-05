@@ -1,6 +1,6 @@
+'use strict';
 
-
-angular.module('angular-carousel.shifty', [])
+var Shifty = angular.module('angular-carousel.shifty', [])
 
 .factory('Tweenable', function() {
 
@@ -14,8 +14,6 @@ angular.module('angular-carousel.shifty', [])
 
   var Tweenable = (function () {
 
-    'use strict';
-
     // Aliases that get defined later in this function
     var formula;
 
@@ -25,9 +23,7 @@ angular.module('angular-carousel.shifty', [])
     var DEFAULT_DURATION = 500;
     var UPDATE_TIME = 1000 / 60;
 
-    var _now = Date.now
-         ? Date.now
-         : function () {return +new Date();};
+    var _now = Date.now ? Date.now : function () {return +new Date();};
 
     var now = typeof SHIFTY_DEBUG_NOW !== 'undefined' ? SHIFTY_DEBUG_NOW : _now;
 
@@ -1403,3 +1399,5 @@ angular.module('angular-carousel.shifty', [])
 
   return window.Tweenable;
 });
+
+module.exports = Shifty;

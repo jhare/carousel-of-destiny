@@ -15,7 +15,8 @@ var manifest = require('gulp-concat-filenames');
 
 var options = {
   'javascript': {
-    'buildFile': 'app.js',
+    'buildDir': './dist/',
+    'buildFile': 'carousel-of-destiny.js',
     'sources': [
       './src/core/**/*.js',
       './src/common/**/*.js',
@@ -42,14 +43,14 @@ function buildJavascript() {
   function doBrowserification(file) {
     return browserify(file, options.browserify)
       .bundle()
-      .pipe(source('features.js'))
-      .pipe(gulp.dest('./dist/'));
+      .pipe(source(options.javascript.buildFile))
+      .pipe(gulp.dest(options.javascript.buildDir));
   }
 
   return gulp
     .src(options.javascript.sources)
-    .pipe(manifest('features.js', options.manifest))
-    .pipe(tap(doBrowserification))
+    .pipe(manifest(options.javascript.buildFile, options.manifest))
+    .pipe(tap(doBrowserification));
 }
 
 function buildStyles() {
