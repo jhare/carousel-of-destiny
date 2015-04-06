@@ -48,14 +48,14 @@ function buildJavascript() {
     return browserify(file, options.browserify)
       .bundle()
       .pipe(source(options.javascript.buildFile))
-      .pipe(buffer())
-      .pipe(uglify())
+      //.pipe(buffer())
+      //.pipe(uglify())
       .pipe(gulp.dest(options.buildDir));
   }
 
   return gulp
     .src(options.javascript.sources)
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(manifest(options.javascript.buildFile, options.manifest))
     .pipe(tap(doBrowserification));
 }

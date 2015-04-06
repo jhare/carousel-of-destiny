@@ -1,5 +1,6 @@
 'use strict';
 
+
 var AngularCarousel = angular.module('angular-carousel')
 .service('DeviceCapabilities', function() {
     // TODO: merge in a single function
@@ -261,7 +262,6 @@ var AngularCarousel = angular.module('angular-carousel')
                     };
 
                     function goToSlide(index, slideOptions) {
-                        //console.log('goToSlide', arguments);
                         // move a to the given slide index
                         if (index === undefined) {
                             index = scope.carouselIndex;
