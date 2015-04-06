@@ -3,20 +3,16 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var stylus = require('gulp-stylus');
-var transform = require('vinyl-transform');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
 var browserify = require('browserify');
-var gutil = require('gulp-util');
 var source = require('vinyl-source-stream');
 var tap = require('gulp-tap');
-var debug = require('gulp-debug');
 var manifest = require('gulp-concat-filenames');
 
 var options = {
+  'buildDir': './dist/',
   'javascript': {
-    'buildDir': './dist/',
     'buildFile': 'carousel-of-destiny.js',
     'sources': [
       './src/public/carousel-of-destiny.js',
@@ -36,7 +32,13 @@ var options = {
   'styles': {
     'buildFile': 'styles.css',
     'sources': [
-      './src/public/styles'
+      './src/public/styles/**/*.styl'
+    ]
+  },
+  'pages': {
+    'buildFile': 'index.html',
+    'sources': [
+      './src/public/index.html'
     ]
   }
 };
@@ -48,7 +50,7 @@ function buildJavascript() {
       .pipe(source(options.javascript.buildFile))
       .pipe(buffer())
       .pipe(uglify())
-      .pipe(gulp.dest(options.javascript.buildDir));
+      .pipe(gulp.dest(options.buildDir));
   }
 
   return gulp
@@ -59,15 +61,29 @@ function buildJavascript() {
 }
 
 function buildStyles() {
+  return gulp.src(options.styles.sources)
+    .pipe(stylus())
+    .pipe(concat(options.styles.buildFile))
+    .pipe(gulp.dest(options.buildDir));
+}
 
+function buildPages() {
+  return gulp.src(options.pages.sources)
+    .pipe(gulp.dest(options.buildDir));
 }
 
 function buildPartials() {
-
+  // TODO: Do partialify shit here
 }
 
 gulp.task('build-javascript', buildJavascript);
 gulp.task('build-styles', buildStyles);
 gulp.task('build-partials', buildPartials);
+gulp.task('build-pages', buildPages);
 
-gulp.task('build', ['build-javascript', 'build-styles', 'build-partials']);
+gulp.task('build', [
+  'build-javascript',
+  'build-styles',
+  'build-partials',
+  'build-pages'
+]);
