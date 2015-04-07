@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "angular": "*",
-    "angular-touch": "*"
+    "angular-touch": "*",
+    "lodash": "^3.6.0"
   },
   "devDependencies": {
     "browserify": "^9.0.4",

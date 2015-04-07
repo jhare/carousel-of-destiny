@@ -1,19 +1,73 @@
 <!doctype html>
-<html>
+<html ng-app="angular-carousel">
 
   <head>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="http://blog.revolunet.com/angular-carousel/demo/demo.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.js"></script>
+    <script type="text/javascript" src="froogaloop.js"></script>
     <script type="text/javascript" src="carousel-of-destiny.js"></script>
   </head>
 
-  <body ng-app="angular-carousel">
-    <ul rn-carousel class="image" style="height: 250px; width: 500px;">
-      <li><img src="http://placekitten.com/g/200/300"/></li>
-      <li><img src="http://placekitten.com/g/200/300"/></li>
-      <li><img src="http://placekitten.com/g/200/300"/></li>
-    </ul>
+  <body ng-controller="MainCtrl" style="width: 100%;">
 
+    <div class="firstCarousel">
+      <ul rn-carousel rn-carousel-index="carouselIndex1" rn-carousel-buffered rn-carousel-controls class="carousel2"
+        style="text-align: center; width: 1000px; height: 1500px; margin: 0 auto;">
+
+        <li ng-repeat="slide in slideImagesOnly track by slide.id" ng-class="'id-' + slide.id">
+          <div ng-if="slide.type === 'image'" ng-style="{'background-image': 'url(' + slide.href + ')'}"  class="bgimage"></div>
+          <div ng-if="slide.type === 'video'"> 
+           
+            <iframe
+              id="{{slide.videoID}}"
+              src="{{slide.href}}"
+              width="500"
+              height="500"
+              frameborder="0"
+              webkitallowfullscreen
+              mozallowfullscreen
+              allowfullscreen></iframe> 
+
+<div>
+  <button>Play</button>
+  <button>Pause</button>
+  <p>Status: <span class="status">&hellip;</span></p>
+</div>
+
+<script type="text/javascript">
+
+</script>
+            
+        </li>
+      </ul>
+      <div class="rn-carousel-indicator custom-indicator" style="margin: 0 auto; width: 300px; text-align: center;">
+        <span ng-repeat="slide in slideImagesOnly" ng-class="{active: $index==$parent.carouselIndex1}" ng-click="$parent.carouselIndex1 = $index">★</span>
+      </div>
+    </div>
+
+    <!--<div class="secondCarousel">-->
+      <!--<ul rn-carousel rn-carousel-index="carouselIndex2" rn-carousel-buffered rn-carousel-controls class="carousel2"-->
+        <!--style="text-align: center; width: 1000px; height: 500px; margin: 0 auto;">-->
+
+        <!--<li ng-repeat="slide in slideWithVideo track by slide.id" ng-class="'id-' + slide.id">-->
+          <!--<div ng-if="slide.type === 'image'" ng-style="{'background-image': 'url(' + slide.href + ')'}"  class="bgimage"></div>-->
+          <!--<div ng-if="slide.type === 'video'"> -->
+           
+            <!--<iframe-->
+              <!--src="{{slide.href}}"-->
+              <!--width="500"-->
+              <!--height="500"-->
+              <!--frameborder="0"-->
+              <!--webkitallowfullscreen-->
+              <!--mozallowfullscreen-->
+              <!--allowfullscreen></iframe> -->
+        <!--</li>-->
+      <!--</ul>-->
+      <!--<div class="rn-carousel-indicator custom-indicator" style="margin: 0 auto; width: 300px; text-align: center;">-->
+        <!--<span ng-repeat="slide in slideWithVideo" ng-class="{active: $index==$parent.carouselIndex2}" ng-click="$parent.carouselIndex2 = $index">★</span>-->
+      <!--</div>-->
+    <!--</div>-->
   </body>
 
 </html>
