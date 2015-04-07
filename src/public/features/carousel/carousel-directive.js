@@ -244,13 +244,17 @@ var AngularCarousel = angular.module('angular-carousel')
                     }
 
                     scope.nextSlide = function(slideOptions) {
+
+                        if(locked) {
+                          return;
+                        }
+
                         var index = scope.carouselIndex + 1;
                         if (index > currentSlides.length - 1) {
                             index = 0;
                         }
-                        if (!locked) {
-                            goToSlide(index, slideOptions);
-                        }
+
+                        goToSlide(index, slideOptions);
                     };
 
                     scope.prevSlide = function(slideOptions) {
@@ -375,6 +379,7 @@ var AngularCarousel = angular.module('angular-carousel')
                         iElement.append($compile(angular.element(tpl))(scope));
                     }
 
+                    console.log('what is happening');
                     if (iAttributes.rnCarouselAutoSlide!==undefined) {
                         var duration = parseInt(iAttributes.rnCarouselAutoSlide, 10) || options.autoSlideDuration;
                         scope.autoSlide = function() {
@@ -383,6 +388,7 @@ var AngularCarousel = angular.module('angular-carousel')
                                 scope.autoSlider = null;
                             }
                             scope.autoSlider = $interval(function() {
+                                console.log('locked is', locked);
                                 if (!locked && !pressed) {
                                     scope.nextSlide();
                                 }

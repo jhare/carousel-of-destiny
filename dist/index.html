@@ -12,10 +12,22 @@
   <body ng-controller="MainCtrl" style="width: 100%;">
 
     <div class="firstCarousel">
-      <ul rn-carousel rn-carousel-index="carouselIndex1" rn-carousel-buffered rn-carousel-controls class="carousel2"
+      <label>
+        <input type="checkbox" ng-model="isLocked" class="ng-pristine ng-valid">
+        Lock this guy
+      </label>
+      <ul rn-carousel
+        rn-carousel-index="carouselIndex1"
+        rn-carousel-buffered
+        rn-carousel-controls
+        rn-carousel-locked="isLocked"
+        rn-carousel-auto-slide
+        class="carousel2"
         style="text-align: center; width: 1000px; height: 1500px; margin: 0 auto;">
 
+        
         <li ng-repeat="slide in slideImagesOnly track by slide.id" ng-class="'id-' + slide.id">
+          <button ng-click="randoFunc()" class="goToNextSlide">Next!</button>
           <div ng-if="slide.type === 'image'" ng-style="{'background-image': 'url(' + slide.href + ')'}"  class="bgimage"></div>
           <div ng-if="slide.type === 'video'"> 
            

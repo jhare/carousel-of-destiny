@@ -69,47 +69,49 @@ theApp.controller('MainCtrl', function MainCtrlDefinition($scope) {
     }
   ];
 
+  $scope.randoFunc = function() {
+    console.log('I AM RANDOOOOO', this);
+  };
+
   setTimeout(function() {
-  function setupFroogaloop() {
-      var iframe = $('#player2')[0];
-      var player = $f(iframe);
-      var status = $('.status');
+    function setupFroogaloop(id) {
+        var iframe = $(id)[0];
+        var player = $f(iframe);
+        var status = $('.status');
 
-      // When the player is ready, add listeners for pause, finish, and playProgress
-      player.addEvent('ready', function() {
-          status.text('ready');
-          
-          player.addEvent('pause', onPause);
-          player.addEvent('finish', onFinish);
-          player.addEvent('playProgress', onPlayProgress);
-          player.addEvent('play', onPlay);
-      });
+        // When the player is ready, add listeners for pause, finish, and playProgress
+        player.addEvent('ready', function() {
+            status.text('ready');
+            
+            player.addEvent('pause', onPause);
+            player.addEvent('finish', onFinish);
+            player.addEvent('playProgress', onPlayProgress);
+            player.addEvent('play', onPlay);
+        });
 
-      function onPlay(id) {
-        status.text('playing ' + id);
-      }
+        function onPlay(id) {
+          status.text('playing ' + id);
+        }
 
-      // Call the API when a button is pressed
-      $('button').bind('click', function() {
-          player.api($(this).text().toLowerCase());
-      });
+        // Call the API when a button is pressed
+        $('button').bind('click', function() {
+            player.api($(this).text().toLowerCase());
+        });
 
-      function onPause(id) {
-          status.text('paused');
-      }
+        function onPause(id) {
+            status.text('paused');
+        }
 
-      function onFinish(id) {
-          status.text('finished');
-      }
+        function onFinish(id) {
+            status.text('finished');
+        }
 
-      function onPlayProgress(data, id) {
-          status.text(data.seconds + 's played');
-      }
-  }
+        function onPlayProgress(data, id) {
+            status.text(data.seconds + 's played');
+        }
+    }
 
-  $(function() {
-      var iframe = $('#player2').load(setupFroogaloop);
-  });
+    setupFroogaloop('#player2');
 
-  });
+    });
 });
