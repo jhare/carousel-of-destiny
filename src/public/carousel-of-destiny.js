@@ -18,7 +18,6 @@ theApp.controller('MainCtrl', function MainCtrlDefinition($scope) {
   $scope.carouselIndex1 = 0;
   $scope.carouselIndex2 = 0;
 
-
   $scope.slideImagesOnly = [
     {
       id: 0,

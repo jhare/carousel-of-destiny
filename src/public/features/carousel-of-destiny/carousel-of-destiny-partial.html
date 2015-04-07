@@ -13,7 +13,7 @@
           style="text-align: center; width: 1000px; height: 1500px; margin: 0 auto;">
 
           
-          <li ng-repeat="slide in slideImagesOnly track by slide.id" ng-class="'id-' + slide.id">
+          <li ng-repeat="slide in slides track by slide.id" ng-class="'id-' + slide.id">
             <button ng-click="randoFunc()" class="goToNextSlide">Next!</button>
             <div ng-if="slide.type === 'image'" ng-style="{'background-image': 'url(' + slide.href + ')'}"  class="bgimage"></div>
             <div ng-if="slide.type === 'video'"> 
@@ -37,7 +37,7 @@
           </li>
         </ul>
         <div class="rn-carousel-indicator custom-indicator" style="margin: 0 auto; width: 300px; text-align: center;">
-          <span ng-repeat="slide in slideImagesOnly" ng-class="{active: $index==$parent.carouselIndex1}" ng-click="$parent.carouselIndex1 = $index">★</span>
+          <span ng-repeat="slide in slides" ng-class="{active: $index==$parent.carouselIndex1}" ng-click="$parent.carouselIndex1 = $index">★</span>
         </div>
       </div>
 </div>

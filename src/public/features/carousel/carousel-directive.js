@@ -379,7 +379,6 @@ var AngularCarousel = angular.module('angular-carousel')
                         iElement.append($compile(angular.element(tpl))(scope));
                     }
 
-                    console.log('what is happening');
                     if (iAttributes.rnCarouselAutoSlide!==undefined) {
                         var duration = parseInt(iAttributes.rnCarouselAutoSlide, 10) || options.autoSlideDuration;
                         scope.autoSlide = function() {
