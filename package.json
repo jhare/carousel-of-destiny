@@ -21,6 +21,7 @@
     "gulp-concat": "^2.5.2",
     "gulp-concat-filenames": "0.0.3",
     "gulp-debug": "^2.0.1",
+    "gulp-flatten": "0.0.4",
     "gulp-nodemon": "^2.0.2",
     "gulp-sourcemaps": "^1.5.1",
     "gulp-stylus": "^2.0.1",

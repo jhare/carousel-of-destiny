@@ -1,0 +1,43 @@
+<div class="carousel-of-destiny">
+  <h1> we've arrived boys </h1>
+
+
+      <div class="firstCarousel">
+        <ul rn-carousel
+          rn-carousel-index="carouselIndex1"
+          rn-carousel-buffered
+          rn-carousel-controls
+          rn-carousel-locked="isLocked"
+          rn-carousel-auto-slide
+          class="carousel2"
+          style="text-align: center; width: 1000px; height: 1500px; margin: 0 auto;">
+
+          
+          <li ng-repeat="slide in slideImagesOnly track by slide.id" ng-class="'id-' + slide.id">
+            <button ng-click="randoFunc()" class="goToNextSlide">Next!</button>
+            <div ng-if="slide.type === 'image'" ng-style="{'background-image': 'url(' + slide.href + ')'}"  class="bgimage"></div>
+            <div ng-if="slide.type === 'video'"> 
+             
+              <iframe
+                id="{{slide.videoID}}"
+                src="{{slide.href}}"
+                width="500"
+                height="500"
+                frameborder="0"
+                webkitallowfullscreen
+                mozallowfullscreen
+                allowfullscreen></iframe> 
+
+  <div>
+    <button>Play</button>
+    <button>Pause</button>
+    <p>Status: <span class="status">&hellip;</span></p>
+  </div>
+
+          </li>
+        </ul>
+        <div class="rn-carousel-indicator custom-indicator" style="margin: 0 auto; width: 300px; text-align: center;">
+          <span ng-repeat="slide in slideImagesOnly" ng-class="{active: $index==$parent.carouselIndex1}" ng-click="$parent.carouselIndex1 = $index">★</span>
+        </div>
+      </div>
+</div>

@@ -21,6 +21,22 @@ var options = {
       './src/public/features/**/*.js'
     ]
   },
+  'styles': {
+    'buildFile': 'styles.css',
+    'sources': [
+      './src/public/styles/**/*.styl'
+    ]
+  },
+  'partials': {
+    'sources': './src/public/features/**/*.html',
+    'subDir': '/partials'
+  },
+  'pages': {
+    'buildFile': 'index.html',
+    'sources': [
+      './src/public/index.html'
+    ]
+  },
   'browserify': {
     'debug': true
   },
@@ -28,18 +44,6 @@ var options = {
     'root': './',
     'prepend': 'require("./',
     'append': '");'
-  },
-  'styles': {
-    'buildFile': 'styles.css',
-    'sources': [
-      './src/public/styles/**/*.styl'
-    ]
-  },
-  'pages': {
-    'buildFile': 'index.html',
-    'sources': [
-      './src/public/index.html'
-    ]
   }
 };
 
@@ -73,7 +77,8 @@ function buildPages() {
 }
 
 function buildPartials() {
-  // TODO: Do partialify shit here
+  return gulp.src(options.partials.sources)
+    .pipe(gulp.dest(options.buildDir + options.partials.subDir));
 }
 
 gulp.task('build-javascript', buildJavascript);

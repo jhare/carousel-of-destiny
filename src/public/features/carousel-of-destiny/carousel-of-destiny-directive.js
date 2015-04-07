@@ -12,7 +12,8 @@ angular.module('angular-carousel')
       'restrict': 'E',
       'scope': true,
       'link': linkCarouselOfDestiny,
-      'templateUrl': '/partials/carousel-of-destiny.html'
+      'templateUrl': '/partials/carousel-of-destiny/carousel-of-destiny-partial.html',
+      'replace': true
     };
 
   }]);
