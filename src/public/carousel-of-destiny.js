@@ -6,8 +6,6 @@ var theApp = angular.module('angular-carousel', [
     'ngTouch',
     'angular-carousel.shifty'
 ]).config(function trustVimeo($sceDelegateProvider) {
-  console.log('i have the provider', $sceDelegateProvider);
-
   $sceDelegateProvider.resourceUrlWhitelist([
     'self',
     'http://player.vimeo.com/video/**',
@@ -68,10 +66,6 @@ theApp.controller('MainCtrl', function MainCtrlDefinition($scope) {
       type: 'image'
     }
   ];
-
-  $scope.randoFunc = function() {
-    console.log('I AM RANDOOOOO', this);
-  };
 
   setTimeout(function() {
     function setupFroogaloop(id) {
