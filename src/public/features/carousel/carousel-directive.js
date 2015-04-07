@@ -387,7 +387,6 @@ var AngularCarousel = angular.module('angular-carousel')
                                 scope.autoSlider = null;
                             }
                             scope.autoSlider = $interval(function() {
-                                console.log('locked is', locked);
                                 if (!locked && !pressed) {
                                     scope.nextSlide();
                                 }

@@ -15,29 +15,10 @@
         slides="slideImagesOnly"
       ></carousel-of-destiny>
 
+      <carousel-of-destiny
+        slides="slideWithVideo"
+      ></carousel-of-destiny>
 
-    <!--<div class="secondCarousel">-->
-      <!--<ul rn-carousel rn-carousel-index="carouselIndex2" rn-carousel-buffered rn-carousel-controls class="carousel2"-->
-        <!--style="text-align: center; width: 1000px; height: 500px; margin: 0 auto;">-->
-
-        <!--<li ng-repeat="slide in slideWithVideo track by slide.id" ng-class="'id-' + slide.id">-->
-          <!--<div ng-if="slide.type === 'image'" ng-style="{'background-image': 'url(' + slide.href + ')'}"  class="bgimage"></div>-->
-          <!--<div ng-if="slide.type === 'video'"> -->
-           
-            <!--<iframe-->
-              <!--src="{{slide.href}}"-->
-              <!--width="500"-->
-              <!--height="500"-->
-              <!--frameborder="0"-->
-              <!--webkitallowfullscreen-->
-              <!--mozallowfullscreen-->
-              <!--allowfullscreen></iframe> -->
-        <!--</li>-->
-      <!--</ul>-->
-      <!--<div class="rn-carousel-indicator custom-indicator" style="margin: 0 auto; width: 300px; text-align: center;">-->
-        <!--<span ng-repeat="slide in slideWithVideo" ng-class="{active: $index==$parent.carouselIndex2}" ng-click="$parent.carouselIndex2 = $index">★</span>-->
-      <!--</div>-->
-    <!--</div>-->
   </body>
 
 </html>
